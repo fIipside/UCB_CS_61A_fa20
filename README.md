@@ -1,6 +1,12 @@
 # CS61A Fall 2020 课程资源
 
-## 课程介绍 | Course Introduction  
+## Language Selection
+- [中文](#中文)
+- [English](#english)
+
+## 中文
+
+## 课程介绍
 CS61A 是 UC Berkeley 的计算机科学入门课程，本项目整理的是 2020 年秋季（Fall 2020）版本的相关资源。  
 本课程由 **John DeNero** 和 **Hany Farid** 授课，主要教授编程基础，涵盖的内容包括：  
 
@@ -12,7 +18,7 @@ CS61A 是 UC Berkeley 的计算机科学入门课程，本项目整理的是 202
 
 ---
 
-## 相关网址 | Relevant Links  
+## 相关网址  
 
 - 📖 **[Composing Programs](https://www.composingprograms.com/)**  
   课程教材，涵盖 Python、Scheme 和 SQL 相关内容。  
@@ -41,6 +47,11 @@ CS61A 是 UC Berkeley 的计算机科学入门课程，本项目整理的是 202
 ---
 
 **GOOD DAYS ARE AHEAD OF US!!!** 🚀✨
+
+---
+
+
+# English
 
 # CS61A Fall 2020 Course Resources
 
