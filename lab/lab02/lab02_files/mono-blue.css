@@ -1,0 +1,90 @@
+/*
+  Five-color theme from a single blue hue.
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: inherit;
+  -webkit-text-size-adjust: none;
+}
+
+.hljs,
+.hljs-list .hljs-built_in {
+  color: #00193a;
+}
+
+.hljs-keyword,
+.hljs-title,
+.hljs-important,
+.hljs-request,
+.hljs-header,
+.hljs-javadoctag {
+  font-weight: bold;
+}
+
+.hljs-comment,
+.hljs-chunk {
+  color: #738191;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-parent,
+.hljs-built_in,
+.hljs-literal,
+.hljs-filename,
+.hljs-value,
+.hljs-addition,
+.hljs-tag,
+.hljs-argument,
+.hljs-link_label,
+.hljs-blockquote,
+.hljs-header,
+.hljs-name {
+  color: #0048ab;
+}
+
+.hljs-decorator,
+.hljs-prompt,
+.hljs-yardoctag,
+.hljs-subst,
+.hljs-symbol,
+.hljs-doctype,
+.hljs-regexp,
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-pi,
+.hljs-attribute,
+.hljs-attr_selector,
+.hljs-javadoc,
+.hljs-xmlDocTag,
+.hljs-deletion,
+.hljs-shebang,
+.hljs-string .hljs-variable,
+.hljs-link_url,
+.hljs-bullet,
+.hljs-sqbracket,
+.hljs-phony {
+  color: #4c81c9;
+}
+
+/*
+     FILE ARCHIVED ON 12:39:07 Dec 13, 2020 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 11:16:13 Aug 15, 2024.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 0.458
+  exclusion.robots: 0.017
+  exclusion.robots.policy: 0.007
+  esindex: 0.009
+  cdx.remote: 21.58
+  LoadShardBlock: 95.764 (3)
+  PetaboxLoader3.datanode: 70.745 (4)
+  PetaboxLoader3.resolve: 318.595 (2)
+  load_resource: 308.289
+*/

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./lab11_files/athena.js.下载" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app202.us.archive.org';v.server_ms=509;archive_analytics.send_pageview({});});</script>
+<script type="text/javascript" src="./lab11_files/bundle-playback.js.下载" charset="utf-8"></script>
+<script type="text/javascript" src="./lab11_files/wombat.js.下载" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="./lab11_files/ruffle.js.下载"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("https://cs61a.org/lab/lab11/","20210118094520","https://web.archive.org/","web","/_static/",
+	      "1610963120");
+</script>
+<link rel="stylesheet" type="text/css" href="./lab11_files/banner-styles.css">
+<link rel="stylesheet" type="text/css" href="./lab11_files/iconochive.css">
+<!-- End Wayback Rewrite JS Include -->
+
+    <meta name="description" content="CS 61A: Structure and Interpretation of Computer Programs">
+    <meta name="keywords" content="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS">
+    <meta name="author" content="Hany Farid, John DeNero">
+    
+    <meta name="viewport" content="width=device-width">
+
+    <script src="./lab11_files/jquery.min.js.下载"></script>
+    <script src="./lab11_files/bootstrap.min.js.下载"></script>
+    <script src="./lab11_files/hl.js.下载"></script>
+    <script>
+        // we aren't registering builtins since
+        //      (1) they don't render differently in the current CSS from other names
+        //      (2) it's a mess to list all of them. You can extract from the site but that takes effort
+        // if (1) ceases to be true, (2) might be worth the effort. For now, we're leaving as is
+        hljsRegister({
+            'keyword': "define if cond and or let begin lambda mu quote delay cons-stream set! quasiquote unquote unquote-splicing define-macro"
+        });
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script src="./lab11_files/dark-mode.js.下载"></script>
+    <link rel="stylesheet" href="./lab11_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./lab11_files/css">
+    <link rel="stylesheet" href="./lab11_files/style.css">
+    <link rel="stylesheet" href="./lab11_files/mono-blue.css">
+    <link rel="icon" href="https://web.archive.org/web/20210118094520im_/https://cs61a.org/assets/images/favicon.ico">
+
+    
+
+    <title>
+Lab 11: Interpreters | CS 61A Fall 2020
+</title>
+  </head>
+
+  <body id="index" class="home"><!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script>__wm.rw(0);</script>
+<div id="wm-ipp-base" lang="en" style="display: block; direction: ltr;"><template shadowrootmode="closed"><div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;" class="">
+<div id="donato" style="position:relative;width:100%;">
+  <div id="donato-base">
+    <iframe id="donato-if" src="https://archive.org/includes/donate.php?as_page=1&amp;platform=wb&amp;referer=https%3A//web.archive.org/web/20210118094520/https%3A//cs61a.org/lab/lab11/" scrolling="no" frameborder="0" style="width:100%; height:100%">
+    </iframe>
+  </div>
+</div><div id="wm-ipp-inside">
+  <div id="wm-toolbar" style="position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;">
+    <div id="wm-logo" style="/*width:110px;*/padding-top:12px;">
+      <a href="https://web.archive.org/web/" title="Wayback Machine home page"><img src="https://web.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png" srcset="/_static/images/toolbar/wayback-toolbar-logo-100.png, /_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, /_static/images/toolbar/wayback-toolbar-logo-200.png 2x" alt="Wayback Machine" style="width:100px" border="0"></a>
+    </div>
+    <div class="c" style="display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;">
+      <form class="u" style="display:flex;flex-direction:row;flex-wrap:nowrap;" target="_top" method="get" action="https://web.archive.org/web/submit" name="wmtb" id="wmtb"><input type="text" name="url" id="wmtbURL" value="https://cs61a.org/lab/lab11/" onfocus="this.focus();this.select();" style="flex:1;" autocomplete="off"><input type="hidden" name="type" value="replay"><input type="hidden" name="date" value="20210118094520"><input type="submit" value="Go">
+      </form>
+      <div style="display:flex;flex-flow:row nowrap;align-items:flex-end;">
+                <div class="s" id="wm-nav-captures" style="flex:1;"><a class="t" href="https://web.archive.org/web/*/https://cs61a.org/lab/lab11/" title="See a list of every capture for this URL">67 captures</a><div class="r" title="Timespan for captures of this URL">20 Dec 2014 - 28 Dec 2024</div></div>
+        <div class="k">
+          <a href="https://web.archive.org/web/20230801000000/https://cs61a.org/lab/lab11/" id="wm-graph-anchor">
+            <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
+              <canvas id="wm-sparkline-canvas" width="750" height="27" border="0"></canvas>
+            <div class="yt" style="display: none; width: 25px; height: 27px; left: 675px;"></div><div class="mt" style="display: none; width: 2px; height: 27px; left: 690px;"></div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="n">
+      <table>
+        <tbody>
+          <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+          <tr class="m">
+            <td class="b" nowrap="nowrap"><a href="https://web.archive.org/web/20201214030435/https://cs61a.org/lab/lab11/" title="14 Dec 2020"><strong>Dec</strong></a></td>
+            <td class="c" id="displayMonthEl" title="You are here: 09:45:20 Jan 18, 2021">Jan</td>
+            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20210413004118/https://cs61a.org/lab/lab11/" title="13 Apr 2021"><strong>Apr</strong></a></td>
+          </tr>
+          <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+          <tr class="d">
+            <td class="b" nowrap="nowrap"><a href="https://web.archive.org/web/20201214030435/https://cs61a.org/lab/lab11/" title="03:04:35 Dec 14, 2020"><img src="https://web.archive.org/_static/images/toolbar/wm_tb_prv_on.png" alt="Previous capture" width="14" height="16" border="0"></a></td>
+            <td class="c" id="displayDayEl" style="width:34px;font-size:22px;white-space:nowrap;" title="You are here: 09:45:20 Jan 18, 2021">18</td>
+            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20210413004118/https://cs61a.org/lab/lab11/" title="00:41:18 Apr 13, 2021"><img src="https://web.archive.org/_static/images/toolbar/wm_tb_nxt_on.png" alt="Next capture" width="14" height="16" border="0"></a></td>
+          </tr>
+          <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+          <tr class="y">
+            <td class="b" nowrap="nowrap"><a href="https://web.archive.org/web/20191114193942/https://cs61a.org/lab/lab11/" title="14 Nov 2019"><strong>2019</strong></a></td>
+            <td class="c" id="displayYearEl" title="You are here: 09:45:20 Jan 18, 2021">2021</td>
+            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20230314034846/https://cs61a.org/lab/lab11" title="14 Mar 2023"><strong>2023</strong></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="r" style="display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;">
+      <div id="wm-btns" style="text-align:right;height:23px;">
+                <span class="xxs">
+          <div id="wm-save-snapshot-success">success</div>
+          <div id="wm-save-snapshot-fail">fail</div>
+          <a id="wm-save-snapshot-open" href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#" title="Share via My Web Archive" style="display: none;">
+            <span class="iconochive-web"></span>
+          </a>
+          <a href="https://archive.org/account/login.php" title="Sign In" id="wm-sign-in" style="display: inline-block;">
+            <span class="iconochive-person"></span>
+          </a>
+          <span id="wm-save-snapshot-in-progress" class="iconochive-web" style="display: none;"></span>
+        </span>
+                <a class="xxs" href="http://faq.web.archive.org/" title="Get some help using the Wayback Machine" style="top:-6px;"><span class="iconochive-question" style="color:rgb(87,186,244);font-size:160%;"></span></a>
+        <a id="wm-tb-close" href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#close" style="top:-2px;" title="Close the toolbar"><span class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span></a>
+      </div>
+      <div id="wm-share" class="xxs">
+        <a href="https://web.archive.org/web/20210118094520/http://web.archive.org/screenshot/https://cs61a.org/lab/lab11/" id="wm-screenshot" title="screenshot (delta: 13s)" style="visibility: visible;">
+          <span class="wm-icon-screen-shot"></span>
+        </a>
+        <a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#" id="wm-video" title="video">
+          <span class="iconochive-movies"></span>
+        </a>
+        <a id="wm-share-facebook" href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#" data-url="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/" title="Share on Facebook" style="margin-right:5px;" target="_blank"><span class="iconochive-facebook" style="color:#3b5998;font-size:160%;"></span></a>
+        <a id="wm-share-twitter" href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#" data-url="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/" title="Share on Twitter" style="margin-right:5px;" target="_blank"><span class="iconochive-twitter" style="color:#1dcaff;font-size:160%;"></span></a>
+      </div>
+      <div style="padding-right:2px;text-align:right;white-space:nowrap;">
+        <a id="wm-expand" class="wm-btn wm-closed" href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#expand"><span id="wm-expand-icon" class="iconochive-down-solid"></span> <span class="xxs" style="font-size:80%;">About this capture</span></a>
+      </div>
+    </div>
+  </div>
+    <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
+        <div id="wm-capinfo-notice" source="api"></div>
+                <div id="wm-capinfo-collected-by">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center">COLLECTED BY</div>
+    <div style="padding:3px;position:relative" id="wm-collected-by-content">
+      <div style="display:inline-block;vertical-align:top;width:49%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/save-page-now)"></span>
+		<div>Collection: <a style="color:#33f;" href="https://archive.org/details/save-page-now" target="_new"><span class="wm-title">Save Page Now</span></a></div>
+	      </div>
+    </div>
+    </div>
+    <div id="wm-capinfo-timestamps">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center" title="Timestamps for the elements of this page">TIMESTAMPS</div>
+    <div>
+      <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
+      <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img src="https://web.archive.org/_static/images/loading.gif" alt="loading"></div>
+    </div>
+    </div>
+  </div></div></div><link rel="stylesheet" type="text/css" href="./lab11_files/banner-styles.css"><link rel="stylesheet" type="text/css" href="./lab11_files/iconochive.css"><div class="wb-autocomplete-suggestions "></div></template>
+</div><div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/</div>
+<script type="text/javascript">//<![CDATA[
+__wm.bt(750,27,25,2,"web","https://cs61a.org/lab/lab11/","20210118094520",1996,"/_static/",["/_static/css/banner-styles.css?v=S1zqJCYt","/_static/css/iconochive.css?v=3PDvdIFv"], false);
+  __wm.rw(1);
+//]]></script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+ 
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://web.archive.org/web/20210118094520/https://cs61a.org/">
+            <img style="max-width:60px; margin-top: -20px;" class="logo" src="./lab11_files/logo.png">
+          </a>
+        <button type="button" class="btn btn-primary" style="float: left; margin-top: 8px;"><span style="filter: grayscale(100%);">✏️</span></button></div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/weekly">Weekly Schedule</a></li>
+            <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/office-hours">Office Hours</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Staff
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/instructor">Instructors</a></li>
+                <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/TAs">TAs</a></li>
+                <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/tutors">Tutors</a></li>
+                <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/academic-interns">Academic Interns</a></li>
+              </ul>
+            </li>
+            <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/resources">Resources</a></li>
+            <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/articles/about">Syllabus</a></li>
+            <li><a href="https://web.archive.org/web/20210118094520/https://piazza.com/berkeley/spring2021/cs61a" target="_blank">Piazza</a></li>
+            <li><a href="https://web.archive.org/web/20210118094520/https://denero.org/feedback.html" target="_blank">Feedback</a></li>
+<!--             <li><a href="https://edge.edx.org/courses/course-v1:BerkeleyX+CSW61A+2020_SP">EdX</a></li> -->
+            <!-- <li><a href="https://scheme.cs61a.org">Scheme</a></li> -->
+            <!-- <li><a href="https://sql.cs61a.org">SQL</a></li> -->
+            <li><a href="https://web.archive.org/web/20210118094520/https://code.cs61a.org/">Code</a></li>
+            <li><a href="https://web.archive.org/web/20210118094520/http://tutor.cs61a.org/">Tutor</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class="row">
+  <div class="col-md-9">
+    <header>
+      <h1>
+        
+Lab 11: Interpreters
+
+        
+        
+        <ul class="inline-block list-inline">
+          <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/lab11.zip" class="label label-outline">lab11.zip</a></li>
+        </ul>
+        
+        
+      </h1>
+    </header>
+    
+
+<p><i>Due by 11:59pm on Tuesday, November 10.</i></p>
+
+
+
+
+<h2 id="starter-files">Starter Files</h2>
+
+<p>Download <a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/lab11.zip">lab11.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the <a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/ok">Ok</a> autograder.</p>
+
+
+
+
+
+
+    
+<h1 id="topics">Topics</h1>
+
+<p>Consult this section if you need a refresher on the material for this lab. It's
+okay to skip directly to <a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#required-questions">the questions</a> and refer back
+here should you get stuck.</p>
+
+
+<h2 id="interpreters">Interpreters</h2>
+
+
+<p>An interpreter is a program that allows you to interact
+with the computer in a certain language. It understands the
+expressions that you type in through that language, and performs
+the corresponding actions in some way, usually using an underlying
+language.</p>
+
+
+            <iframe width="560" height="315" src="./lab11_files/8BHhZWBAlug.html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-ruffle-polyfilled=""></iframe>
+
+<p>In Project 4, you will use Python to implement an interpreter for
+Scheme. The Python interpreter that you've been using all semester is written
+(mostly) in the C programming language. The computer itself uses hardware to
+interpret machine code (a series of ones and zeros that represent basic
+operations like adding numbers, loading information from memory, etc).</p>
+
+<p>When we talk about an interpreter, there are two languages at work:</p>
+
+<ol>
+  <li><strong>The language being interpreted/implemented.</strong> In this lab, you will
+  implement the PyCombinator language.</li>
+  <li><strong>The underlying implementation language.</strong> In this lab, you will use Python
+  to implement the PyCombinator language.</li>
+</ol>
+
+<p>Note that the underlying language need not be different from the implemented
+language. In fact, in this lab we are going to implement a smaller version of
+Python (PyCombinator) using Python! This idea is called Metacircular Evaluation.</p>
+
+<p>Many interpreters use a Read-Eval-Print Loop (REPL). This loop waits for user
+input, and then processes it in three steps:</p>
+
+<ul>
+  <li><p><strong>Read:</strong> The interpreter takes the user input (a string) and passes it
+  through a lexer and parser.</p>
+
+  <ul>
+    <li>The <em>lexer</em> turns the user input string into atomic pieces (tokens) that
+    are like "words" of the implemented language.</li>
+    <li><p>The <em>parser</em> takes the tokens and organizes them into data structures
+    that the underlying language can understand.</p>
+
+    
+            <iframe width="560" height="315" src="./lab11_files/Fimpv8yzAWY.html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-ruffle-polyfilled=""></iframe></li>
+  </ul></li>
+  <li><p><strong>Eval:</strong> Mutual recursion between eval and apply evaluate the expression to
+  obtain a value.</p>
+
+  <ul>
+    <li><em>Eval</em> takes an expression and evaluates it according to the rules of the
+    language. Evaluating a call expression involves calling <code>apply</code> to apply
+    an evaluated operator to its evaluated operands.</li>
+    <li><p><em>Apply</em> takes an evaluated operator, i.e., a function, and applies it to
+    the call expression's arguments. Apply may call <code>eval</code> to do more work in
+    the body of the function, so <code>eval</code> and <code>apply</code> are <em>mutually recursive</em>.</p>
+
+    
+            <iframe width="560" height="315" src="./lab11_files/gB2dtI8MzII.html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-ruffle-polyfilled=""></iframe></li>
+  </ul></li>
+  <li><strong>Print:</strong> Display the result of evaluating the user input.</li>
+</ul>
+
+<p>Here's how all the pieces fit together:</p>
+
+<pre><code class="hljs sql">         +<span class="hljs-comment">-------------------------------- Loop -----------+</span>
+         |                                                 |
+         |  +<span class="hljs-comment">-------+   +--------+   +-------+   +-------+ |</span>
+Input <span class="hljs-comment">---+-&gt;| Lexer |--&gt;| Parser |--&gt;| Eval  |--&gt;| Print |-+--&gt; Output</span>
+         |  +<span class="hljs-comment">-------+   +--------+   +-------+   +-------+ |</span>
+         |                              ^  |               |
+         |                              |  v               |
+         ^                           +<span class="hljs-comment">-------+             v</span>
+         |                           | Apply |             |
+         |    REPL                   +<span class="hljs-comment">-------+             |</span>
+         +<span class="hljs-comment">-------------------------------------------------+</span></code></pre>
+
+
+<h1 id="required-questions">Required Questions</h1>
+
+
+
+<h2 id="pycombinator-interpreter">PyCombinator Interpreter</h2>
+
+
+<p>Today we will build <strong>PyCombinator</strong>, our own basic Python interpreter. By the
+end of this lab, you will be able to use a bunch of primitives such as <code>add</code>,
+<code>mul</code>, and <code>sub</code>, and even more excitingly, we will be able to create and call
+lambda functions -- all through your own homemade interpreter!</p>
+
+<p>You will implement some of the key parts that will allow us to evaluate the
+following commands and more:</p>
+
+<pre><code class="hljs python">&gt; add(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)
+<span class="hljs-number">7</span>
+&gt; mul(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>)
+<span class="hljs-number">20</span>
+&gt; sub(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+<span class="hljs-number">-1</span>
+&gt; (<span class="hljs-keyword">lambda</span>: <span class="hljs-number">4</span>)()
+<span class="hljs-number">4</span>
+&gt; (<span class="hljs-keyword">lambda</span> x, y: add(y, x))(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>)
+<span class="hljs-number">8</span>
+&gt; (<span class="hljs-keyword">lambda</span> x: <span class="hljs-keyword">lambda</span> y: mul(x, y))(<span class="hljs-number">3</span>)(<span class="hljs-number">4</span>)
+<span class="hljs-number">12</span>
+&gt; (<span class="hljs-keyword">lambda</span> f: f(<span class="hljs-number">0</span>))(<span class="hljs-keyword">lambda</span> x: pow(<span class="hljs-number">2</span>, x))
+<span class="hljs-number">1</span></code></pre>
+
+<p>You can find the Read-Eval-Print Loop code for our interpreter in <code>repl.py</code>.
+Here is an overview of each of the REPL components:</p>
+
+<ul>
+  <li><p><strong>Read:</strong> The function <code>read</code> in <code>reader.py</code> calls the following two functions
+  to parse user input.</p>
+
+  <ul>
+    <li>The <em>lexer</em> is the function <code>tokenize</code> in <code>reader.py</code> which splits the
+    user input string into tokens.</li>
+    <li>The <em>parser</em> is the function <code>read_expr</code> in <code>reader.py</code> which parses the
+    tokens and turns expressions into instances of subclasses of the class
+    <code>Expr</code> in <code>expr.py</code>, e.g. <code>CallExpr</code>.</li>
+  </ul></li>
+  <li><p><strong>Eval:</strong> Expressions (represented as <code>Expr</code> objects) are evaluated to obtain
+  values (represented as <code>Value</code> objects, also in <code>expr.py</code>).</p>
+
+  <ul>
+    <li><em>Eval</em>: Each type of expression has its own <code>eval</code> method which is
+    called to evaluate it.</li>
+    <li><em>Apply</em>: Call expressions are evaluated by calling the operator's <code>apply</code>
+    method on the arguments. For lambda procedures, <code>apply</code> calls <code>eval</code> to
+    evaluate the body of the function.</li>
+  </ul></li>
+  <li><strong>Print:</strong> The <code>__str__</code> representation of the obtained value is printed.</li>
+</ul>
+
+<p>In this lab, you will only be implementing the <em>Eval</em> and <em>Apply</em> steps in
+<code>expr.py</code>.</p>
+
+<p>You can start the PyCombinator interpreter by running the following command:</p>
+
+<pre><code class="hljs">python3 repl.py</code></pre>
+
+<p>Try entering a literal (e.g. <code>4</code>) or a lambda expression, (e.g. <code>lambda x, y:
+add(x, y)</code>) to see what they evaluate to.</p>
+
+<p>You can also try entering some names. You can see the entire list of names
+that we can use in PyCombinator at the bottom of <code>expr.py</code>. Note that our set
+of primitives doesn't include the operators <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> -- these are
+replaced by <code>add</code>, <code>sub</code>, etc.</p>
+
+<p>Right now, any names (e.g. <code>add</code>) and call expressions (e.g. <code>add(2, 3)</code>) will
+output <code>None</code>.  It's your job to implement <code>Name.eval</code> and <code>CallExpr.eval</code> so
+that we can look up names and call functions in our interpreter!</p>
+
+<p>You don't have to understand how the read component of our interpreter is
+implemented, but if you want a better idea of how user input is read and
+transformed into Python code, you can use the <code>--read</code> flag when running the
+interpreter:</p>
+
+<pre><code class="hljs python">$ python3 repl.py --read
+&gt; add
+Name(<span class="hljs-string">'add'</span>)
+&gt; <span class="hljs-number">3</span>
+Literal(<span class="hljs-number">3</span>)
+&gt; <span class="hljs-keyword">lambda</span> x: mul(x, x)
+LambdaExpr([<span class="hljs-string">'x'</span>], CallExpr(Name(<span class="hljs-string">'mul'</span>), [Name(<span class="hljs-string">'x'</span>), Name(<span class="hljs-string">'x'</span>)]))
+&gt; add(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+CallExpr(Name(<span class="hljs-string">'add'</span>), [Literal(<span class="hljs-number">2</span>), Literal(<span class="hljs-number">3</span>)])</code></pre>
+
+<p>To exit the interpreter, type Ctrl-C or Ctrl-D.</p>
+
+<p>For this lab, you will be writing code in <code>expr.py</code>.</p>
+
+<h3 class="question" id="q1">Q1: Prologue</h3>
+
+<p>Before we write any code, let's try to understand the parts of the interpreter
+that are already written.</p>
+
+<p>Here is the breakdown of our implementation:</p>
+
+<ul>
+  <li><code>repl.py</code> contains the logic for the REPL loop, which repeatedly reads
+  expressions as user input, evaluates them, and prints out their values (you
+  don't have to completely understand all the code in this file).</li>
+  <li><code>reader.py</code> contains our interpreter's reader. The function <code>read</code> calls the
+  functions <code>tokenize</code> and <code>read_expr</code> to turn an expression string into an
+  <code>Expr</code> object (you don't have to completely understand all the code in this
+  file).</li>
+  <li><code>expr.py</code> contains our interpreter's representation of expressions and
+  values. The subclasses of <code>Expr</code> and <code>Value</code> encapsulate all the types of
+  expressions and values in the PyCombinator language. The global environment,
+  a dictionary containing the bindings for primitive functions, is also defined
+  at the bottom of this file.</li>
+</ul>
+
+<blockquote><p>Use Ok to test your understanding of the reader. It will be helpful to refer
+to <code>reader.py</code> to answer these questions.</p>
+
+<pre><code class="hljs">python3 ok -q prologue_reader -u</code></pre>
+
+<p>Use Ok to test your understanding of the <code>Expr</code> and <code>Value</code> objects. It will
+be helpful to refer to <code>expr.py</code> to answer these questions.</p>
+
+<pre><code class="hljs">python3 ok -q prologue_expr -u</code></pre></blockquote>
+
+<h3 class="question" id="q2">Q2: Evaluating Names</h3>
+
+<p>The first type of PyCombinator expression that we want to evaluate are names.
+In our program, a name is an instance of the <code>Name</code> class. Each instance has a
+<code>var_name</code> attribute which is the name of the variable -- e.g. <code>"x"</code>.</p>
+
+<p>Recall that the value of a name depends on the current environment. In our
+implementation, an environment is represented by a dictionary that maps
+variable names (strings) to their values (instances of the <code>Value</code> class).</p>
+
+<p>The method <code>Name.eval</code> takes in the current environment as the parameter <code>env</code>
+and returns the value bound to the <code>Name</code>'s <code>var_name</code> in this environment.
+Implement it as follows:</p>
+
+<ul>
+  <li>If the name exists in the current environment, look it up and return the
+  value it is bound to.</li>
+  <li>If the name does not exist in the current environment, return <code>None</code></li>
+</ul>
+
+<p>You will add code to the file <code>expr.py</code>.
+<solution></solution></p>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eval</span><span class="hljs-params">(self, env)</span>:</span>
+    <span class="hljs-string">"""
+    &gt;&gt;&gt; env = {
+    ...     'a': Number(1),
+    ...     'b': LambdaFunction([], Literal(0), {})
+    ... }
+    &gt;&gt;&gt; Name('a').eval(env)
+    Number(1)
+    &gt;&gt;&gt; Name('b').eval(env)
+    LambdaFunction([], Literal(0), {})
+    &gt;&gt;&gt; print(Name('c').eval(env))
+    None
+    """</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</code></pre>
+
+
+
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q Name.eval</code></pre>
+
+<p>Now that you have implemented the evaluation of names, you can look up names in
+the global environment like <code>add</code> and <code>sub</code> (see the full list of primitive
+math operators in <code>global_env</code> at the bottom of <code>expr.py</code>). You can also try
+looking up undefined names to see how the <code>NameError</code> is displayed!</p>
+
+<pre><code class="hljs">$ python3 repl.py
+&gt; add
+&lt;primitive function add&gt;</code></pre>
+
+<p>Unfortunately, you still cannot call these functions. We'll fix that next!</p>
+
+<h3 class="question" id="q3">Q3: Evaluating Call Expressions</h3>
+
+<p>Now, let's add logic for evaluating call expressions, such as <code>add(2, 3)</code>.
+Remember that a call expression consists of an operator and 0 or more operands.</p>
+
+<p>In our implementation, a call expression is represented as a <code>CallExpr</code>
+instance.  Each instance of the <code>CallExpr</code> class has the attributes <code>operator</code>
+and <code>operands</code>.  <code>operator</code> is an instance of <code>Expr</code>, and, since a call
+expression can have multiple operands, <code>operands</code> is a <em>list</em> of <code>Expr</code>
+instances.</p>
+
+<p>For example, in the <code>CallExpr</code> instance representing <code>add(3, 4)</code>:</p>
+
+<ul>
+  <li><code>self.operator</code> would be <code>Name('add')</code></li>
+  <li><code>self.operands</code> would be the list <code>[Literal(3), Literal(4)]</code></li>
+</ul>
+
+<p>In <code>CallExpr.eval</code>, implement the three steps to evaluate a call expression:</p>
+
+<ol>
+  <li>Evaluate the <em>operator</em> in the current environment.</li>
+  <li>Evaluate the <em>operand(s)</em> in the current environment.</li>
+  <li>Apply the value of the operator, a function, to the value(s) of the
+  operand(s).</li>
+</ol>
+
+<blockquote><p><strong>Hint:</strong> Since the operator and operands are all instances of <code>Expr</code>, you
+can evaluate them by calling their <code>eval</code> methods. Also, you can apply a
+function (an instance of <code>PrimitiveFunction</code> or <code>LambdaFunction</code>) by calling
+its <code>apply</code> method, which takes in a list of arguments (<code>Value</code> instances).</p></blockquote>
+
+<p>You will add code to the file <code>expr.py</code>.</p>
+
+<solution>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eval</span><span class="hljs-params">(self, env)</span>:</span>
+    <span class="hljs-string">"""
+    &gt;&gt;&gt; from reader import read
+    &gt;&gt;&gt; new_env = global_env.copy()
+    &gt;&gt;&gt; new_env.update({'a': Number(1), 'b': Number(2)})
+    &gt;&gt;&gt; add = CallExpr(Name('add'), [Literal(3), Name('a')])
+    &gt;&gt;&gt; add.eval(new_env)
+    Number(4)
+    &gt;&gt;&gt; new_env['a'] = Number(5)
+    &gt;&gt;&gt; add.eval(new_env)
+    Number(8)
+    &gt;&gt;&gt; read('max(b, a, 4, -1)').eval(new_env)
+    Number(5)
+    &gt;&gt;&gt; read('add(mul(3, 4), b)').eval(new_env)
+    Number(14)
+    """</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</code></pre>
+
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q CallExpr.eval</code></pre>
+
+<p>Now that you have implemented the evaluation of call expressions, we can use
+our interpreter for simple expressions like <code>sub(3, 4)</code> and <code>add(mul(4, 5), 4)</code>.
+Open your interpreter to do some cool math:</p>
+
+<pre><code class="hljs">$ python3 repl.py</code></pre>
+
+
+<h1 id="optional-questions">Optional Questions</h1>
+
+
+<h3 class="question" id="q4">Q4: Applying Lambda Functions</h3>
+
+<p>We can do some basic math now, but it would be a bit more fun if we could also
+call our own user-defined functions. So let's make sure that we can do that!</p>
+
+<p>A lambda function is represented as an instance of the <code>LambdaFunction</code> class.
+If you look in <code>LambdaFunction.__init__</code>, you will see that each lambda function
+has three instance attributes: <code>parameters</code>, <code>body</code> and <code>parent</code>. As an example,
+consider the lambda function <code>lambda f, x: f(x)</code>. For the corresponding
+<code>LambdaFunction</code> instance, we would have the following attributes:</p>
+
+<ul>
+  <li><code>parameters</code> -- a list of strings, e.g. <code>['f', 'x']</code></li>
+  <li><code>body</code> -- an <code>Expr</code>, e.g. <code>CallExpr(Name('f'), [Name('x')])</code></li>
+  <li><code>parent</code> -- the parent environment in which we want to look up our variables.
+  Notice that this is the environment the lambda function was defined in.
+  <code>LambdaFunction</code>s are created in the <code>LambdaExpr.eval</code> method, and the current
+  environment then becomes this <code>LambdaFunction</code>'s parent environment.</li>
+</ul>
+
+<p>If you try entering a lambda expression into your interpreter now, you should
+see that it outputs a lambda function. However, if you try to call a lambda
+function, e.g. <code>(lambda x: x)(3)</code> it will output <code>None</code>.</p>
+
+<p>You are now going to implement the <code>LambdaFunction.apply</code> method so that we can
+call our lambda functions! This function takes a list <code>arguments</code> which
+contains the argument <code>Value</code>s that are passed to the function. When evaluating
+the lambda function, you will want to make sure that the lambda function's
+formal parameters are correctly bound to the arguments it is passed. To do
+this, you will have to modify the environment you evaluate the function body
+in.</p>
+
+<p>There are three steps to applying a <code>LambdaFunction</code>:</p>
+
+<ol>
+  <li>Make a copy of the parent environment. You can make a copy of a dictionary <code>d</code>
+  with <code>d.copy()</code>.</li>
+  <li>Update the copy with the <code>parameters</code> of the <code>LambdaFunction</code> and the
+  <code>arguments</code> passed into the method.</li>
+  <li>Evaluate the <code>body</code> using the newly created environment.</li>
+</ol>
+
+<blockquote><p><em>Hint:</em> You may find the built-in <code>zip</code> function useful to pair up the
+parameter names with the argument values.</p></blockquote>
+
+<solution>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">apply</span><span class="hljs-params">(self, arguments)</span>:</span>
+    <span class="hljs-string">"""
+    &gt;&gt;&gt; from reader import read
+    &gt;&gt;&gt; add_lambda = read('lambda x, y: add(x, y)').eval(global_env)
+    &gt;&gt;&gt; add_lambda.apply([Number(1), Number(2)])
+    Number(3)
+    &gt;&gt;&gt; add_lambda.apply([Number(3), Number(4)])
+    Number(7)
+    &gt;&gt;&gt; sub_lambda = read('lambda add: sub(10, add)').eval(global_env)
+    &gt;&gt;&gt; sub_lambda.apply([Number(8)])
+    Number(2)
+    &gt;&gt;&gt; add_lambda.apply([Number(8), Number(10)]) # Make sure you made a copy of env
+    Number(18)
+    &gt;&gt;&gt; read('(lambda x: lambda y: add(x, y))(3)(4)').eval(global_env)
+    Number(7)
+    &gt;&gt;&gt; read('(lambda x: x(x))(lambda y: 4)').eval(global_env)
+    Number(4)
+    """</span>
+    <span class="hljs-keyword">if</span> len(self.parameters) != len(arguments):
+        <span class="hljs-keyword">raise</span> TypeError(<span class="hljs-string">"Oof! Cannot apply number {} to arguments {}"</span>.format(
+            comma_separated(self.parameters), comma_separated(arguments)))
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q LambdaFunction.apply</code></pre>
+
+<p>After you finish, you should try out your new feature! Open your interpreter
+and try creating and calling your own lambda functions. Since functions are
+values in our interpreter, you can have some fun with higher order functions,
+too!</p>
+
+<pre><code class="hljs python">$ python3 repl.py
+&gt; (<span class="hljs-keyword">lambda</span> x: add(x, <span class="hljs-number">3</span>))(<span class="hljs-number">1</span>)
+<span class="hljs-number">4</span>
+&gt; (<span class="hljs-keyword">lambda</span> f, x: f(f(x)))(<span class="hljs-keyword">lambda</span> y: mul(y, <span class="hljs-number">2</span>), <span class="hljs-number">3</span>)
+<span class="hljs-number">12</span></code></pre>
+
+<h3 class="question" id="q5">Q5: Handling Exceptions</h3>
+
+<p>The interpreter we have so far is pretty cool. It seems to be working, right?
+Actually, there is one case we haven't covered. Can you think of a very simple
+calculation that is undefined (maybe involving division)? Try to see what happens
+if you try to compute it using your interpreter (using <code>floordiv</code> or <code>truediv</code> since
+we don't have a standard <code>div</code> operator in PyCombinator). It's pretty ugly, right?
+We get a long error message and exit our interpreter -- but really, we want to handle
+this elegantly.</p>
+
+<p>Try opening up the interpreter again and see what happens if you do something
+ill defined like <code>add(3, x)</code>. We just get a nice error message saying that <code>x</code>
+is not defined, and we can then continue using our interpreter. This is because
+our code handles the <code>NameError</code> exception, preventing it from crashing our
+program. Let's talk about how to handle exceptions:</p>
+
+<p>In lecture, you learned how to raise exceptions. But it's also important to
+catch exceptions when necessary. Instead of letting the exception propagate back
+to the user and crash the program, we can catch it using a <code>try/except</code> block
+and allow the program to continue.</p>
+
+<pre><code class="hljs python"><span class="hljs-keyword">try</span>:
+    &lt;<span class="hljs-keyword">try</span> suite&gt;
+<span class="hljs-keyword">except</span> &lt;ExceptionType <span class="hljs-number">0</span>&gt; <span class="hljs-keyword">as</span> e:
+    &lt;<span class="hljs-keyword">except</span> suite <span class="hljs-number">0</span>&gt;
+<span class="hljs-keyword">except</span> &lt;ExceptionType <span class="hljs-number">1</span>&gt; <span class="hljs-keyword">as</span> e:
+    &lt;<span class="hljs-keyword">except</span> suite <span class="hljs-number">1</span>&gt;
+...</code></pre>
+
+<p>We put the code that might raise an exception in the <code>&lt;try suite&gt;</code>. If an
+exception is raised, then the program will look at what type of exception was
+raised and look for a corresponding <code>&lt;except suite&gt;</code>. You can have as many
+except suites as you want.</p>
+
+<pre><code class="hljs python"><span class="hljs-keyword">try</span>:
+    <span class="hljs-number">1</span> + <span class="hljs-string">'hello'</span>
+<span class="hljs-keyword">except</span> NameError <span class="hljs-keyword">as</span> e:
+    print(<span class="hljs-string">'hi'</span>)  <span class="hljs-comment"># NameError except suite</span>
+<span class="hljs-keyword">except</span> TypeError <span class="hljs-keyword">as</span> e:
+    print(<span class="hljs-string">'bye'</span>) <span class="hljs-comment"># TypeError except suite</span></code></pre>
+
+<p>In the example above, adding <code>1</code> and <code>'hello'</code> will raise a <code>TypeError</code>. Python
+will look for an except suite that handles <code>TypeError</code>s -- the second except
+suite. Generally, we want to specify exactly which exceptions we want to handle,
+such as <code>OverflowError</code> or <code>ZeroDivisionError</code> (or both!), rather than handling
+all exceptions.</p>
+
+<p>Notice that we can define the exception <code>as e</code>. This assigns the exception
+object to the variable <code>e</code>. This can be helpful when we want to use information
+about the exception that was raised.</p>
+
+<pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">try</span>:
+<span class="hljs-meta">... </span>    x = int(<span class="hljs-string">"cs61a rocks!"</span>)
+<span class="hljs-meta">... </span><span class="hljs-keyword">except</span> ValueError <span class="hljs-keyword">as</span> e:
+<span class="hljs-meta">... </span>    print(<span class="hljs-string">'Oops! That was no valid number.'</span>)
+<span class="hljs-meta">... </span>    print(<span class="hljs-string">'Error message:'</span>, e)</code></pre>
+
+<p>You can see how we handle exceptions in your interpreter in <code>repl.py</code>. Modify this code to handle ill-defined arithmetic errors, as well as type errors. Go ahead and try it out!</p>
+
+
+<h2 id="submit">Submit</h2>
+
+
+<p>Make sure to submit this assignment by running:</p>
+
+<pre><code class="hljs sql">python3 ok <span class="hljs-comment">--submit</span></code></pre>
+<script>
+    $('.alwaystoggle').css('display', 'inline-block');
+    $('.alwaystoggle').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+</script>
+
+  </div>
+
+  <div class="col-md-3 sticky">
+    <nav class="hidden-print hidden-sm hidden-xs sidebar">
+      <ul class="nav nav-stacked noselect">
+  <li class=""><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#topics">Topics</a></li>
+  <ul class="nav nav-stacked noselect">
+    <li class=""><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#interpreters">Interpreters</a></li>
+  </ul>
+  <li class=""><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#required-questions">Required Questions</a></li>
+  <ul class="nav nav-stacked noselect">
+    <li class=""><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#pycombinator-interpreter">PyCombinator Interpreter</a></li>
+    <ul class="nav nav-stacked noselect">
+      <li class=""><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#q1">Q1: Prologue</a></li>
+      <li class=""><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#q2">Q2: Evaluating Names</a></li>
+      <li class=""><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#q3">Q3: Evaluating Call Expressions</a></li>
+    </ul>
+  </ul>
+  <li class=""><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#optional-questions">Optional Questions</a></li>
+  <ul class="nav nav-stacked noselect">
+    <li class=""><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#q4">Q4: Applying Lambda Functions</a></li>
+    <li class=""><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#q5">Q5: Handling Exceptions</a></li>
+  </ul>
+  <ul class="nav nav-stacked noselect">
+    <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/lab/lab11/#submit">Submit</a></li>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/weekly">Weekly Schedule</a></li>
+            <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/office-hours">Office Hours</a></li>
+            <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/staff">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/resources">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/articles/studying">Studying Guide</a></li>
+            <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/articles/debugging">Debugging Guide</a></li>
+            <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/articles/composition">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/articles/about">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/articles/about#assignments">Assignments</a></li>
+            <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/articles/about#exams">Exams</a></li>
+            <li><a href="https://web.archive.org/web/20210118094520/https://cs61a.org/articles/about#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+<script src="./lab11_files/sketchy.js.下载"></script>
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+
+  function goToId(id) {
+    var target = $(id);
+    target.parent().show();
+    $('html,body').animate({
+      scrollTop: target.offset().top,
+    }, 100);
+    $("body").scrollspy('refresh');
+  }
+
+  if (location.hash) {
+    setTimeout(function() {
+      if (location.hash) {
+        goToId(location.hash);
+      }
+    }, 1);
+  }
+
+  $("a").click(function(event) {
+    var urlBeforeHashRegEx = new RegExp("^"+window.location.href.split("#")[0]);
+    if (/^#/.test(this.hash) && urlBeforeHashRegEx.test(this.href)) {
+      event.preventDefault();
+      goToId(this.hash);
+      document.location.hash = this.hash;
+    }
+  });
+</script>
+
+  
+
+<canvas style="cursor: crosshair; top: 0px; left: 0px; position: absolute; z-index: 99; background-color: rgba(0, 0, 0, 0.25); user-select: none; pointer-events: none; display: none;" width="1591" height="10056"></canvas></body></html>
