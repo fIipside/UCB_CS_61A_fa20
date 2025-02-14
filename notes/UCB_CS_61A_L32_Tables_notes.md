@@ -103,9 +103,8 @@ Test summary
 ```
 ## Not covered
 ### Expressions
-- *genealogy*:
-- *pedigree*:
-- *lineage*:
-- *hand-inspecting*:
-- *elf*:
-- *quarantine*：
+- *genealogy*: (the study of) the history of the past and present members of a family or families. 
+- *pedigree*: a person's family history, education, and experience, or the history of an idea or activity. 
+- *lineage*: the members of a person's family who are directly related to that person and who lived a long time before him or her. 
+- *elf*: an imaginary being, often like a small person with pointed ears, in popular stories. 
+- *quarantine*：a specific period of time in which a person or animal that has a disease, or may have one, must stay or be kept away from others in order to prevent the spread of the disease. 
