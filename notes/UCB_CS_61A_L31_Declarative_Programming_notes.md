@@ -121,9 +121,9 @@ Test summary
 ```
 ## Not covered
 ### Expressions
-- *ubiquitous*:
-- *paradigm*:
-- *proprietary*:
-- *nautical*:
-- *alias*:
-- *an awful lot*:
+- *ubiquitous*: seeming to be everywhere. 
+- *paradigm*: a model of something, or a very clear and typical example of something. 
+- *proprietary*: relating to owning something, or relating to or like an owner. 
+- *nautical*: relating to ships, sailing, or sailors. 
+- *alias*: used when giving the name that a person is generally known by, after giving their real name. 
+- *an awful lot*: a large amount. 
