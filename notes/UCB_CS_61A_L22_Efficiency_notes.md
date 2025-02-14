@@ -116,8 +116,7 @@ def count_frames(f):
 ![image.png](https://s2.loli.net/2025/01/14/1MLyVzNnse52Zuf.png)
 ## Not covered
 ### Expressions
-*prototypical*:
-*sandwich*:
+- *prototypical*: relating to a particular type of person or thing that is seen as very typical. 
 ## lab 08
 ```sh
 ---------------------------------------------------------------------
