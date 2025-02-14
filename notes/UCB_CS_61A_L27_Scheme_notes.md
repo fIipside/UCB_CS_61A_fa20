@@ -333,7 +333,5 @@ Test summary
 ```
 ## Not covered
 ### Expressions
-- *daunting*: 
-- *substrate*:
-
-
+- *daunting*: making you feel slightly frightened or worried about your ability to achieve something. 
+- *substrate*: a substance or surface that an organism grows and lives on and is supported by. 
