@@ -185,15 +185,14 @@ False
 ## Not covered
 ### Implementing Classes and Objects
 ### Expressions
-*introspective*:
-*coercion*:
-*braille*:
-*polymorphic*:
-*protocol*:
-*orthogonal*:
-*elicit*:
-*cumbersome*:
-*latent*:
-*rhombus*:
-*quadrilateral*:
-*widget*:
+- *introspective*: examining and considering your own ideas, thoughts, and feelings, instead of talking to other people about them. 
+- *coercion*: the use of force to persuade someone to do something that they are unwilling to do. 
+- *Braille*: a system of printing for blind people, in which each letter is represented as a raised pattern that can be read by touching it with the fingers. 
+- *polymorphic*: (polymorphism) the fact that something such as an animal or organism can exist in different forms. 
+- *orthogonal*: relating to an angle of 90 degrees, or forming an angle of 90 degrees. 
+- *elicit*: to get or produce something, especially information or a reaction. 
+- *cumbersome*: awkward because of being large, heavy, or not effective. 
+- *latent*: present but needing particular conditions to become active, obvious, or completely developed. 
+- *rhombus*: a flat shape that has four sides that are all of equal length. 
+- *quadrilateral*: a flat shape with four straight sides. 
+- *widget*: any small device whose name you have forgotten or do not know. 
