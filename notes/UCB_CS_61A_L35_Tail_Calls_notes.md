@@ -84,6 +84,6 @@ Test summary
 ```
 ## Not covered
 ### Expressions
-- *corpus*: (corpora)
-- *vowel*：
-- *bandwidth*:
+- *corpus*: (corpora) a collection of written or spoken material stored on a computer and used to find out how language is used. 
+- *vowel*：a speech sound produced by humans when the breath flows out through the mouth without being blocked by the teeth, tongue, or lips. 
+- *bandwidth*: a measurement of the amount of information that can be sent between computers, through a phone line, etc.
