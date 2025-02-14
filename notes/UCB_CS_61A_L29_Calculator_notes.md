@@ -256,8 +256,6 @@ Test summary
 ```
 ## Not covered
 ### Expressions
-- *metalinguistic*:
-- *delimit*:
-- *parse*:
-- *predicate*:
-- *interleave*:
+- *metalinguistic*: metalinguistics is the study of language and its relationship to other cultural behaviors.
+- *parse*: to separate a sentence into grammatical parts, such as subject, verb, etc.
+- *predicate*: in grammar, the part of a sentence that contains the verb and gives information about the subject. 
