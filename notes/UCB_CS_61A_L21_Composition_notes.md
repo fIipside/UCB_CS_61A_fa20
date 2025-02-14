@@ -241,10 +241,9 @@ def height(tree):
 ![image.png](https://s2.loli.net/2025/01/13/7fHCyXecKJwOFro.png)
 ## Not covered
 ### Expressions
-*predicate*:
-*adjoin*：
-*adjunction*:
-*quadratic*:
+- *adjoin*：to be very near, next to, or touching. 
+- *adjudication*: the act of judging a case, competition, or argument, or of making a formal decision about something. 
+- *quadratic*: including an unknown value that is multiplied by itself only once. 
 ## Q&A
 ```py
 def permutations(s):
