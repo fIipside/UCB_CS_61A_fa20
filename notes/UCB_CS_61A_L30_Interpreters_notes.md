@@ -432,8 +432,8 @@ Score:
 ```
 ## Not covered
 ### Expressions
-- *decrement*:
-- *propagate*:
-- *quirk*:
-- *unleash*:
-- *switch off*:
+- *decrement*: a reduction; a lower level or amount. 
+- *propagate*: to produce a new plant using a parent plant. 
+- *quirk*: an unusual habit or part of someone's personality, or something that is strange and unexpected. 
+- *unleash*: to suddenly release a violent force that cannot be controlled. 
+- *switch off*: to stop giving your attention to someone or something.
