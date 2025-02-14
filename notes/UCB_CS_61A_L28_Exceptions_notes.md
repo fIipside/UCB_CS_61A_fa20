@@ -151,6 +151,6 @@ def divide_all(n, ds):
 ### Exception Objects
 - Consider applying `find_zero` to find the zero of the function $2x^2+sqrt(x)$. This function has a zero at 0, but evaluating it on any negative number will raise a `ValueError`. Our Chapter 1 implementation of Newton's Method would raise that error and fail to return any guess of the zero. Our revised implementation returns the last guess found before the error.
 ### Expressions
-- *examples abound*:
-- *backtrace*:
-- *coarse*:
+- *(examples) abound*: to exist in large numbers. 
+- *backtrack*: to go back along a path that you have just followed. 
+- *coarse*: rough and not smooth or soft, or not in very small pieces. 
