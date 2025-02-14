@@ -136,11 +136,10 @@ Test summary
 ```
 ## Not covered
 ### Expressions
-- *protocol*:
-- *semantic*:
-- *delimit*:
-- *latency*:
-- *interchangeable*:
-- *scaffolding*:
-- *supernodes*:
-- *poodle*:
+- *protocol*: a computer language allowing computers that are connected to each other to communicate. 
+- *semantic*: connected with the meanings of words. 
+- *delimit*: to mark or describe the limits of something. 
+- *latency*: the fact of being present but needing particular conditions to become active, obvious, or completely developed. 
+- *interchangeable*: able to be exchanged with each other without making any difference or without being noticed. 
+- *scaffolding*: a structure of metal poles and wooden boards put against a building for workers to stand on when they want to reach the higher parts of the building. 
+- *poodle*: a dog with curly hair that is usually cut short, except on its head, tail, and legs. 
