@@ -188,10 +188,10 @@ Test summary
 ```
 ## Not covered
 ### Expressions
-- *synchronize*:
-- *spawn*:
-- *interleave*:
-- *daemon*:
-- *duplex*:
-- *pitfall*:
-- *deadlock*:
+- *synchronize*: to (cause to) happen at the same time. 
+- *spawn*: the eggs of fish, frogs, etc.
+- *interleave*: to combine different things so that parts of one thing are put between parts of another thing. 
+- *daemon*: in stories from ancient Greece, a creature that is part human and part god. 
+- *duplex*: a set of rooms for living in that are on two floors of a building. 
+- *pitfall*: a likely mistake or problem in a situation. 
+- *deadlock*: a situation in which agreement in an argument cannot be reached because neither side will change its demands or accept any of the demands of the other side. 
